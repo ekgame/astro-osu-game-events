@@ -1,0 +1,63 @@
+---
+import { Image } from 'astro:assets';
+import githubSvg from './github.svg';
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<nav class="text-white">
+			<div class="max-w-2xl mx-auto p-4 flex flex-row items-center gap-4">
+				<a href="/" class="font-bold underline">
+					osu! Game Discord Events
+				</a>
+				<a href="#">
+					<Image src={githubSvg} alt="Github"/>
+				</a>
+			</div>
+		</nav>
+
+		<main class="max-w-2xl mx-auto p-4">
+			<slot />
+		</main>
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--text-color: white;
+		--background-color: #10141E;
+		--osu-pink: #FF66AA;
+		--panel-background: #1C212D;
+		--panel-hover: #2a3244;
+	}
+	html {
+		font-family: system-ui, sans-serif;
+		background: var(--background-color);
+		color: var(--text-color)
+	}
+
+	.text-osu-pink {
+		color: var(--osu-pink);
+	}
+
+	.bg-panel {
+		background: var(--panel-background);
+	}
+
+	
+</style>

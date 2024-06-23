@@ -1,0 +1,45 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Title from '../../components/Title.astro';
+---
+
+<Layout title="osu! Event #1">
+    <Title><a class="underline" href="/event-1">osu! Event #1</a></Title>
+
+    <div class="flex flex-row justify-center items-end pt-16">
+        
+        
+        <div class="relative h-40 w-32 bg-gray-100/30 p-4 pt-16 rounded-xl rounded-br-none flex flex-col">
+            <div class="w-full left-0 absolute top-0 -translate-y-1/2 flex flex-row justify-center">
+                <div class="w-20 h-20 rounded-full overflow-hidden border-yellow-500 border-solid border-4" >
+                    <img class="w-full h-full" src="https://placehold.co/64x64"/>
+                </div>
+                <div class="absolute size-8 bg-yellow-500 text-black flex justify-center items-center rounded-full bottom-0 translate-y-3 font-bold">#1</div>
+            </div>
+            <div class="text-center">Username</div>
+            <div class="text-center">Score</div>
+        </div>
+
+        <div class="relative h-36 w-32 bg-gray-100/20 p-4 pt-16 rounded-xl rounded-br-none rounded-bl-none">
+            <div class="w-full left-0 absolute top-0 -translate-y-1/2 flex flex-row justify-center">
+                <div class="w-20 h-20 rounded-full overflow-hidden border-gray-600 border-solid border-4" >
+                    <img class="w-full h-full" src="https://placehold.co/64x64"/>
+                </div>
+                <div class="absolute size-8 bg-gray-600 text-white flex justify-center items-center rounded-full bottom-0 translate-y-3 font-bold">#2</div>
+            </div>
+            <div class="text-center">Username</div>
+            <div class="text-center">Score</div>
+        </div>
+
+        <div class="relative h-32 w-32 bg-gray-100/10 p-4 pt-16 rounded-xl rounded-bl-none">
+            <div class="w-full left-0 absolute top-0 -translate-y-1/2 flex flex-row justify-center">
+                <div class="w-20 h-20 rounded-full overflow-hidden border-orange-900 border-solid border-4" >
+                    <img class="w-full h-full" src="https://placehold.co/64x64"/>
+                </div>
+                <div class="absolute size-8 bg-orange-900 text-white flex justify-center items-center rounded-full bottom-0 translate-y-3 font-bold">#3</div>
+            </div>
+            <div class="text-center">Username</div>
+            <div class="text-center">Score</div>
+        </div>
+    </div>
+</Layout>
