@@ -10,7 +10,6 @@ import { totalScores, beatmapScores } from './_score_data.json';
 const sortedTotalScores = totalScores.sort((a,b) => b.score - a.score);
 
 const sortedBeatmapScores = beatmapScores
-    .sort((a,b) => b.scores.length - a.scores.length)
     .map(game => ({
       ...game,
       scores: game.scores.sort((a,b) => b.score - a.score),
