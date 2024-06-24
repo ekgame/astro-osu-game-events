@@ -1,0 +1,48 @@
+---
+import { formatNumber, type PlayerScore } from '../utils/common.ts';
+
+interface Props {
+	scores: PlayerScore[];
+    forBeatmap?: boolean;
+}
+
+const { 
+    scores,
+    forBeatmap = false,
+} = Astro.props;
+
+---
+
+<div class={`bg-gray-500/20 rounded-xl px-2 py-1 ${forBeatmap && 'rounded-tl-none rounded-tr-none'}`}>
+    <table class="w-full">
+        <thead>
+            <tr>
+                <th class="text-center p-1 sm:p-2 w-1">#</th>
+                <th class="text-left p-1 sm:p-2">Player</th>
+                <th class="text-right p-1 sm:p-2">Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            {scores.map((score, index) => 
+                <tr class="border-b border-gray-600/50 last:border-b-0">
+                    <td class="text-center p-1 sm:p-2 text-sm">
+                        {index == 0 && <span class="inline-block p-1 w-7 rounded-full bg-yellow-500 text-black font-bold">1</span>}
+                        {index == 1 && <span class="inline-block p-1 w-7 rounded-full bg-gray-500 font-bold">2</span>}
+                        {index == 2 && <span class="inline-block p-1 w-7 rounded-full bg-yellow-900 font-bold">3</span>}
+                        {index > 2 && (index + 1)}
+                    </td>
+                    <td class="text-left p-1 sm:p-2">
+                        <a href={`https://osu.ppy.sh/users/${score.player.userId}`} class="flex items-center gap-4 hover:text-gray-500 transition-colors">
+                            {!forBeatmap && <img class="size-6 sm:size-8 rounded-full border-2 border-gray-500" src={`https://a.ppy.sh/${score.player.userId}`} alt={score.player.username}/>}
+                            <div class="font-bold flex gap-2 items-center">
+                                <span class="text-xs sm:text-sm">{score.player.username}</span>
+                                {!forBeatmap && <span class="text-[0.65em] px-2 p-1 bg-gray-500/50 rounded-xl text-white">#{formatNumber(score.player.rank)}</span>}
+                            </div>
+                        </a>
+                    </td>
+                    <td class="text-right p-1 sm:p-2 text-sm">{formatNumber(score.score)}</td>
+                </tr>
+            )}
+        </tbody>
+    </table>
+</div>

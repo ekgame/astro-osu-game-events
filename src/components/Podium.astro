@@ -1,0 +1,52 @@
+---
+import { formatNumber, type PlayerScore } from '../utils/common.ts';
+
+interface Props {
+	playerScore1: PlayerScore;
+    playerScore2: PlayerScore;
+    playerScore3: PlayerScore;
+    additionalClasses?: string
+}
+
+const { 
+    playerScore1,
+    playerScore2,
+    playerScore3,
+} = Astro.props;
+
+---
+
+<div class="flex flex-row justify-center items-end pt-14">
+    <div class="relative h-40 w-32 bg-gray-100/30 p-2 pt-14 rounded-xl rounded-br-none flex flex-col text-xs sm:text-base">
+        <div class="w-full left-0 absolute top-0 -translate-y-2/3 flex flex-row justify-center">
+            <div class="size-16 sm:size-20 rounded-full overflow-hidden border-yellow-500 border-solid border-4 bg-gray-800" >
+                <img class="w-full h-full" src={`https://a.ppy.sh/${playerScore1.player.userId}`} alt={playerScore1.player.username}/>
+            </div>
+            <div class="absolute size-8 bg-yellow-500 text-black flex justify-center items-center rounded-full bottom-0 translate-y-3 font-bold">#1</div>
+        </div>
+        <div class="text-center font-bold">{playerScore1.player.username}</div>
+        <div class="text-center">{formatNumber(playerScore1.score)}</div>
+    </div>
+
+    <div class="relative h-36 w-32 bg-gray-100/20 p-4 pt-14 rounded-xl rounded-br-none rounded-bl-none text-xs sm:text-base">
+        <div class="w-full left-0 absolute top-0 -translate-y-2/3 flex flex-row justify-center">
+            <div class="size-16 sm:size-20 rounded-full overflow-hidden border-gray-600 border-solid border-4 bg-gray-800" >
+                <img class="w-full h-full" src={`https://a.ppy.sh/${playerScore2.player.userId}`} alt={playerScore2.player.username}/>
+            </div>
+            <div class="absolute size-8 bg-gray-600 text-white flex justify-center items-center rounded-full bottom-0 translate-y-3 font-bold">#2</div>
+        </div>
+        <div class="text-center font-bold">{playerScore2.player.username}</div>
+        <div class="text-center">{formatNumber(playerScore2.score)}</div>
+    </div>
+
+    <div class="relative h-32 w-32 bg-gray-100/10 p-4 pt-14 rounded-xl rounded-bl-none text-xs sm:text-base">
+        <div class="w-full left-0 absolute top-0 -translate-y-2/3 flex flex-row justify-center">
+            <div class="size-16 sm:size-20 rounded-full overflow-hidden border-yellow-900 border-solid border-4 bg-gray-800" >
+                <img class="w-full h-full" src={`https://a.ppy.sh/${playerScore3.player.userId}`} alt={playerScore3.player.username}/>
+            </div>
+            <div class="absolute size-8 bg-yellow-900 text-white flex justify-center items-center rounded-full bottom-0 translate-y-3 font-bold">#3</div>
+        </div>
+        <div class="text-center font-bold">{playerScore3.player.username}</div>
+        <div class="text-center">{formatNumber(playerScore3.score)}</div>
+    </div>
+</div>

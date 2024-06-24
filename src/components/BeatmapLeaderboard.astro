@@ -1,0 +1,46 @@
+---
+import Leaderboard from "./Leaderboard.astro";
+import { type PlayerScore, type Beatmap } from '../utils/common.ts';
+
+interface Props {
+	scores: PlayerScore[];
+    beatmap: Beatmap;
+}
+
+const { 
+    beatmap,
+    scores,
+} = Astro.props;
+
+---
+
+<div class="rounded-xl overflow-hidden">
+    <a href="#" class="group bg-center bg-cover flex flex-col gap-4 p-4 darken" style={`background-image: url("https://assets.ppy.sh/beatmaps/${beatmap.beatmapSetId}/covers/card@2x.jpg")`}>
+        <div>
+            <div class="font-bold group-hover:underline">{beatmap.title}</div>
+            <div>by {beatmap.artist}</div>
+        </div>
+
+        <div class="text-xs">
+            <div>{beatmap.version}</div>
+            <div>mapset by {beatmap.creator}</div>
+        </div>
+    </a>
+    <Leaderboard scores={scores} forBeatmap={true}/>
+</div>
+
+<style>
+    .darken {
+        position: relative;
+    }
+    .darken::before {
+        position: absolute;
+        content: ' ';
+        inset: 0;
+        background-color: rgba(0, 0, 0, .5);
+    }
+
+    .darken > * {
+        z-index: 1;
+    }
+</style>
