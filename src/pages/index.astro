@@ -3,10 +3,13 @@ import Layout from '../layouts/Layout.astro';
 import Title from '../components/Title.astro';
 import Timeline from '../components/Timeline.astro';
 import TimelineItem from '../components/TimelineItem.astro';
+
+import { Image } from 'astro:assets';
+import logo from './logo.png';
 ---
 
 <Layout title="osu! game Discord events.">
-	<Title>osu! Game Discord Events</Title>
+	<Image class="mb-10" src={logo} alt="osu! Game Discord Events" />
 	<p class="mb-10">
 		At the <a class="underline" href="https://discord.gg/osu">unofficial osu! game community discord server</a>,
 		every once in a while we hold some multiplayer events.
