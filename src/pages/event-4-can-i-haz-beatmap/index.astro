@@ -1,0 +1,573 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Title from "../../components/Title.astro";
+import Timeline from "../../components/Timeline.astro";
+import TimelineItem from "../../components/TimelineItem.astro";
+import Event4JudgementTable from "../../components/Event4JudgementTable.astro";
+
+import { Image } from "astro:assets";
+import banner from "./banner.png";
+
+import { parse as parseCsv } from "csv-parse/sync";
+import grading1Csv from "./grading1.csv?raw";
+import grading2Csv from "./grading2.csv?raw";
+import grading3Csv from "./grading3.csv?raw";
+
+const grading1 = parseCsv(grading1Csv, {
+    columns: true,
+});
+
+const grading2 = parseCsv(grading2Csv, {
+    columns: true,
+});
+
+const grading3 = parseCsv(grading3Csv, {
+    columns: true,
+});
+
+function getGradingArray(map_no: number) {
+    const map_index = map_no - 1;
+    return [
+        [
+            grading1[map_index].song_representation,
+            grading2[map_index].song_representation,
+            grading3[map_index].song_representation,
+        ].map(parseFloat),
+        [
+            grading1[map_index].map_consistency,
+            grading2[map_index].map_consistency,
+            grading3[map_index].map_consistency,
+        ].map(parseFloat),
+        [
+            grading1[map_index].pattern_creativity,
+            grading2[map_index].pattern_creativity,
+            grading3[map_index].pattern_creativity,
+        ].map(parseFloat),
+        [
+            grading1[map_index].general_quality,
+            grading2[map_index].general_quality,
+            grading3[map_index].general_quality,
+        ].map(parseFloat),
+        [
+            grading1[map_index].era_representation,
+            grading2[map_index].era_representation,
+            grading3[map_index].era_representation,
+        ].map(parseFloat),
+        [
+            grading1[map_index].modernization,
+            grading2[map_index].modernization,
+            grading3[map_index].modernization,
+        ].map(parseFloat),
+    ];
+}
+---
+
+<Layout title="osu! Event #4 - Can I haz beatmap?">
+    <Title>osu! Event #4 - Can I haz beatmap?</Title>
+
+    <Image class="mb-8" src={banner} alt="osu! Event #4 - Can I haz beatmap?" />
+
+    <p class="mb-8">
+        Mappers were challenged to make a beatmap inspired by old styles. Choose
+        an old map and try to take inspiration from it, while also applying
+        modern mapping techniques to put a new spin on it.
+    </p>
+
+    <div class="mb-8">
+        <h2 class="mb-4 text-lg font-bold">Rules For Participation</h2>
+        <ul class="list-disc pl-8">
+            <li>
+                The song you are mapping must have a ranked or approved standard
+                map from 2011 or prior, with &gt;100k plays. (<a
+                    href="https://osu.ppy.sh/beatmapsets?q=ranked<%3D2011"
+                    class="underline text-osu-pink"
+                    >https://osu.ppy.sh/beatmapsets?q=ranked&lt;%3D2011</a
+                >)
+            </li>
+            <li>Maps should not be longer than 5 minutes in drain time</li>
+            <li>Maps must be made in the osu! standard game mode.</li>
+            <li>
+                You may participate alone or as a team of 2 people, in which
+                case the prize will be split.
+            </li>
+            <li>
+                You may not submit a map that has been uploaded to the osu!
+                website before the start of the event.
+            </li>
+            <li>
+                Your map should be submitted with a short text, explaining some
+                of the ideas that you used for your map, to help us better
+                understand creative decisions when grading.
+            </li>
+            <li>
+                All content in the map must adhere to this server's rules (e.g.
+                no NSFW, or excessive use of language).
+            </li>
+        </ul>
+    </div>
+
+    <div class="mb-8">
+        <h2 class="mb-4 text-lg font-bold">Grading</h2>
+        <p class="mb-4">
+            Maps will be graded based on 6 categories (graded 0-5):
+        </p>
+        <ul class="list-disc pl-8">
+            <li>
+                <span class="font-bold">Song representation</span>: How well
+                does your map represent the song?
+            </li>
+            <li>
+                <span class="font-bold">Map consistency</span>: Is the mapping
+                consistent and does the difficulty of the map scale properly
+                with the different parts of the song?
+            </li>
+            <li>
+                <span class="font-bold">Pattern creativity</span>: Are creative
+                patterns (slider, circle patterns) used? Do they make sense with
+                the song?
+            </li>
+            <li>
+                <span class="font-bold">General quality</span>: Is everything
+                snapped and timed correctly? Is there a fitting background,
+                combo colours? Is it hitsounded properly? Is the flow
+                appropriate? Do the difficulty sliders make sense? Bonus points
+                may be awarded for storyboards.
+            </li>
+            <li>
+                <span class="font-bold">Era representation</span>: How well are
+                old mapping techniques applied?
+            </li>
+            <li>
+                <span class="font-bold">Modernization</span>: How well would the
+                map be received by a modern audience? How does you map contrast
+                and compare with the original?
+            </li>
+        </ul>
+    </div>
+
+    <div class="mb-8">
+        <h2 class="mb-4 text-lg font-bold">Prizes</h2>
+        <p class="mb-4">
+            The prizes of the contest by judge voting are the following:
+        </p>
+        <ul class="list-disc pl-8 mb-4">
+            <li>
+                <span class="font-bold">First place</span>: 2 years of osu!
+                supporter and the <span
+                    class="text-yellow-400 bg-yellow-950 px-1 rounded-md"
+                    >@Mapping Contest Winner 2024</span
+                > role,
+            </li>
+            <li>
+                <span class="font-bold">Second place</span>: 1 year of osu!
+                supporter,
+            </li>
+            <li>
+                <span class="font-bold">Third place</span>: 6 months of osu!
+                supporter.
+            </li>
+        </ul>
+
+        <p class="mb-4">
+            An opportunity was also given for server members to vote on the map
+            they like the most. The winner received an additional
+            <span class="font-bold">1 year of osu! supporter</span>.
+        </p>
+
+        <p class="mb-4 italic">
+            Note: osu! supporter tags can be exchanged for the corresponding
+            amount of money over PayPal on request.
+        </p>
+    </div>
+
+    <div class="mb-8">
+        <h2 class="mb-4 text-lg font-bold">Judging</h2>
+        <p class="mb-4">
+            The maps were judged by a panel of 3 judges who are themselves
+            experienced mappers and modders:
+            <ul class="list-disc pl-8">
+                <li>
+                    <a
+                        href="https://osu.ppy.sh/users/3076909"
+                        target="_blank"
+                        class="underline text-osu-pink">Mafumafu</a
+                    > - member of the NAT. They have nominated over 400 maps during
+                    their time, as well as having helped with judging and organizing
+                    in over 30 other mapping contests!
+                </li>
+                <li>
+                    <a
+                        href="https://osu.ppy.sh/users/10374819"
+                        target="_blank"
+                        class="underline text-osu-pink">im cute</a
+                    > - ranked & loved mapper, as well as an ex-BN, they have 15
+                    ranked maps and they have nominated over 30!
+                </li>
+                <li>
+                    <a
+                        href="https://osu.ppy.sh/users/19299669"
+                        target="_blank"
+                        class="underline text-osu-pink">Paradoxal</a
+                    > - they have made over 30 maps total and have earned over 500
+                    kudosu from modding beatmaps!
+                </li>
+            </ul>
+        </p>
+    </div>
+
+    <div class="mb-8">
+        <h2 class="mb-4 text-lg font-bold">Event Timeline</h2>
+
+        <Timeline>
+            <TimelineItem
+                title="Contest announced, submissions opened"
+                date="2024-04-07"
+                dense={true}
+            />
+            <TimelineItem
+                title="Deadline extended"
+                date="2024-06-16"
+                dense={true}
+            />
+            <TimelineItem
+                title="Submissions closed"
+                date="2024-07-02"
+                dense={true}
+            />
+            <TimelineItem
+                title="Results announced"
+                date="2024-08-19"
+                dense={true}
+            />
+        </Timeline>
+    </div>
+
+    <h2 class="mb-4 text-lg font-bold">Results</h2>
+
+    <div class="mb-8 border border-gray-800 p-4">
+        <h3 class="mb-4 text-md font-bold text-yellow-600">First place</h3>
+
+        <div class="divide-y divide-gray-800">
+            <div class="py-2">
+                <span class="font-bold"
+                    >Akiyamauni, ZUN - Mystic Oriental Love Consultation</span
+                >
+                <br />
+                Mapped by <a
+                    href="https://osu.ppy.sh/users/11554800"
+                    target="_blank"
+                    class="underline text-osu-pink">Randomness64</a
+                >
+            </div>
+
+            <div class="py-2">
+                <a
+                    href="/assets/event-4-maps/Akiyamauni, ZUN - Mystic Oriental Love Consultation.osz"
+                    target="_blank"
+                    class="underline text-osu-pink">download link</a
+                >
+                |
+                <a
+                    href="https://osu.ppy.sh/beatmapsets/2215092#osu/4693357"
+                    target="_blank"
+                    class="underline text-osu-pink">osu link</a
+                >
+            </div>
+
+            <div class="pt-2 relative overflow-x-auto">
+                <div class="aspect-w-16 aspect-h-9">
+                    <iframe
+                        width="auto"
+                        height="auto"
+                        src="https://www.youtube.com/embed/3kccw1Dn0no"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen
+                    >
+                    </iframe>
+                </div>
+
+                <Event4JudgementTable judgement={getGradingArray(6)} />
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-8 border border-gray-800 p-4">
+        <h3 class="mb-4 text-md font-bold text-gray-400">Second place</h3>
+
+        <div class="divide-y divide-gray-800">
+            <div class="py-2">
+                <span class="font-bold">Rita - dorchadas</span>
+                <br />
+                Mapped by <a
+                    href="https://osu.ppy.sh/users/19950570"
+                    target="_blank"
+                    class="underline text-osu-pink">EnderCraft</a
+                >
+            </div>
+
+            <div class="py-2">
+                <a
+                    href="/assets/event-4-maps/Rita - dorchadas.osz"
+                    target="_blank"
+                    class="underline text-osu-pink">download link</a
+                >
+                |
+                <a
+                    href="https://osu.ppy.sh/beatmapsets/2172198#osu/4585064"
+                    target="_blank"
+                    class="underline text-osu-pink">osu link</a
+                >
+            </div>
+
+            <div class="pt-2 relative overflow-x-auto">
+                <div class="aspect-w-16 aspect-h-9">
+                    <iframe
+                        width="auto"
+                        height="auto"
+                        src="https://www.youtube.com/embed/lWcC6aqFnAw"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen
+                    >
+                    </iframe>
+                </div>
+
+                <Event4JudgementTable judgement={getGradingArray(1)} />
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-8 border border-gray-800 p-4">
+        <h3 class="mb-4 text-md font-bold text-orange-600">Third place</h3>
+
+        <div class="divide-y divide-gray-800">
+            <div class="py-2">
+                <span class="font-bold"
+                    >Shihoko Hirata - Pursuing my true self</span
+                >
+                <br />
+                Mapped by <a
+                    href="https://osu.ppy.sh/users/34064854"
+                    target="_blank"
+                    class="underline text-osu-pink">Tenexxt</a
+                >
+            </div>
+
+            <div class="py-2">
+                <a
+                    href="/assets/event-4-maps/Shihoko Hirata - Pursuing my true self.osz"
+                    target="_blank"
+                    class="underline text-osu-pink">download link</a
+                >
+                |
+                <a
+                    href="https://osu.ppy.sh/beatmapsets/2209647#osu/4680032"
+                    target="_blank"
+                    class="underline text-osu-pink">osu link</a
+                >
+            </div>
+
+            <div class="pt-2 relative overflow-x-auto">
+                <div class="aspect-w-16 aspect-h-9">
+                    <iframe
+                        width="auto"
+                        height="auto"
+                        src="https://www.youtube.com/embed/bkYqWds5mUk"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen
+                    >
+                    </iframe>
+                </div>
+
+                <Event4JudgementTable judgement={getGradingArray(4)} />
+            </div>
+        </div>
+    </div>
+
+    <h2 class="text-lg font-bold">Runner ups</h2>
+    <p class="mb-4 italic text-gray-500">In no particular order</p>
+
+    <div class="mb-8 border border-gray-800 p-4">
+        <div class="divide-y divide-gray-800">
+            <div class="pb-2">
+                <h3 class="mb-4 text-md font-bold text-osu-pink">Community vote winner</h3>
+                <span class="font-bold"
+                    >Kishida Kyoudan - HIGHSCHOOL OF THE DEAD (TV Size)</span
+                >
+                <br />
+                Mapped by <a
+                    href="https://osu.ppy.sh/users/20973052"
+                    target="_blank"
+                    class="underline text-osu-pink">Phoenix</a
+                >
+            </div>
+
+            <div class="py-2">
+                <a
+                    href="/assets/event-4-maps/Kishida Kyoudan - HIGHSCHOOL OF THE DEAD (TV Size).osz"
+                    target="_blank"
+                    class="underline text-osu-pink">download link</a
+                >
+            </div>
+
+            <div class="pt-2 relative overflow-x-auto">
+                <div class="aspect-w-16 aspect-h-9">
+                    <iframe
+                        width="auto"
+                        height="auto"
+                        src="https://www.youtube.com/embed/3_BSMLKeIeY"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen
+                    >
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-8 border border-gray-800 p-4">
+        <div class="divide-y divide-gray-800">
+            <div class="pb-2">
+                <span class="font-bold"
+                    >Inspector K - Disconnected Hardkore (CanBlaster Remix)
+                    (ULTRA CUT)
+                </span>
+                <br />
+                Mapped by <a
+                    href="https://osu.ppy.sh/users/11904298"
+                    target="_blank"
+                    class="underline text-osu-pink">whalermelon</a
+                >
+            </div>
+
+            <div class="py-2">
+                <a
+                    href="/assets/event-4-maps/Inspector K - Disconnected Hardkore (CanBlaster Remix) (ULTRA CUT).osz"
+                    target="_blank"
+                    class="underline text-osu-pink">download link</a
+                >
+                |
+                <a
+                    href="https://osu.ppy.sh/beatmapsets/2210029#osu/4681156"
+                    target="_blank"
+                    class="underline text-osu-pink">osu link</a
+                >
+            </div>
+
+            <div class="pt-2 relative overflow-x-auto">
+                <div class="aspect-w-16 aspect-h-9">
+                    <iframe
+                        width="auto"
+                        height="auto"
+                        src="https://www.youtube.com/embed/MbttX_jCqBA"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen
+                    >
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-8 border border-gray-800 p-4">
+        <div class="divide-y divide-gray-800">
+            <div class="pb-2">
+                <span class="font-bold">Kenju Ninuma - DiscoPrince </span>
+                <br />
+                Mapped by <a
+                    href="https://osu.ppy.sh/users/35767921"
+                    target="_blank"
+                    class="underline text-osu-pink">HoshinoYuuki</a
+                >
+            </div>
+
+            <div class="py-2">
+                <a
+                    href="/assets/event-4-maps/Kenju Ninuma - DiscoPrince.osz"
+                    target="_blank"
+                    class="underline text-osu-pink">download link</a
+                >
+                |
+                <a
+                    href="https://osu.ppy.sh/beatmapsets/2174271#osu/4590418"
+                    target="_blank"
+                    class="underline text-osu-pink">osu link</a
+                >
+            </div>
+
+            <div class="pt-2 relative overflow-x-auto">
+                <div class="aspect-w-16 aspect-h-9">
+                    <iframe
+                        width="auto"
+                        height="auto"
+                        src="https://www.youtube.com/embed/bO6H1PvedV0"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen
+                    >
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-8 border border-gray-800 p-4">
+        <div class="divide-y divide-gray-800">
+            <div class="pb-2">
+                <span class="font-bold">Zirkus Zirkus - 17 & Smoorverliefd</span>
+                <br />
+                Mapped by <a
+                    href="https://osu.ppy.sh/users/32735131"
+                    target="_blank"
+                    class="underline text-osu-pink">UsoXavv</a
+                >
+            </div>
+
+            <div class="py-2">
+                <a
+                    href="/assets/event-4-maps/Zirkus Zirkus - 17  Smoorverliefd.osz"
+                    target="_blank"
+                    class="underline text-osu-pink">download link</a
+                >
+                |
+                <a
+                    href="https://osu.ppy.sh/beatmapsets/2218386#osu/4702222"
+                    target="_blank"
+                    class="underline text-osu-pink">osu link</a
+                >
+            </div>
+
+            <div class="pt-2 relative overflow-x-auto">
+                <div class="aspect-w-16 aspect-h-9">
+                    <iframe
+                        width="auto"
+                        height="auto"
+                        src="https://www.youtube.com/embed/uPOv2nPdSDU"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen
+                    >
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</Layout>

@@ -1,0 +1,108 @@
+---
+
+interface Props {
+	judgement: number[][];
+}
+
+const { 
+    judgement,
+} = Astro.props;
+
+const totalJudge1 = judgement.map(entry => entry[0]).reduce((a, b) => a + b, 0);
+const totalJudge2 = judgement.map(entry => entry[1]).reduce((a, b) => a + b, 0);
+const totalJudge3 = judgement.map(entry => entry[2]).reduce((a, b) => a + b, 0);
+
+---
+
+<table
+    class="mt-4 w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+>
+    <thead
+        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+    >
+        <tr>
+            <th scope="col" class="px-6 py-3">Category</th>
+            <th scope="col" class="px-6 py-3 text-center">Judge 1</th>
+            <th scope="col" class="px-6 py-3 text-center">Judge 2</th>
+            <th scope="col" class="px-6 py-3 text-center">Judge 3</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+            <th
+                scope="row"
+                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+            >
+                Song representation
+            </th>
+            <td class="px-6 py-4 text-center">{judgement[0][0]}</td>
+            <td class="px-6 py-4 text-center">{judgement[0][1]}</td>
+            <td class="px-6 py-4 text-center">{judgement[0][2]}</td>
+        </tr>
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+            <th
+                scope="row"
+                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+            >
+                Map consistency
+            </th>
+            <td class="px-6 py-4 text-center">{judgement[1][0]}</td>
+            <td class="px-6 py-4 text-center">{judgement[1][1]}</td>
+            <td class="px-6 py-4 text-center">{judgement[1][2]}</td>
+        </tr>
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+            <th
+                scope="row"
+                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+            >
+                Pattern creativity
+            </th>
+            <td class="px-6 py-4 text-center">{judgement[2][0]}</td>
+            <td class="px-6 py-4 text-center">{judgement[2][1]}</td>
+            <td class="px-6 py-4 text-center">{judgement[2][2]}</td>
+        </tr>
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+            <th
+                scope="row"
+                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+            >
+                General quality
+            </th>
+            <td class="px-6 py-4 text-center">{judgement[3][0]}</td>
+            <td class="px-6 py-4 text-center">{judgement[3][1]}</td>
+            <td class="px-6 py-4 text-center">{judgement[3][2]}</td>
+        </tr>
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+            <th
+                scope="row"
+                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+            >
+                Era representation
+            </th>
+            <td class="px-6 py-4 text-center">{judgement[4][0]}</td>
+            <td class="px-6 py-4 text-center">{judgement[4][1]}</td>
+            <td class="px-6 py-4 text-center">{judgement[4][2]}</td>
+        </tr>
+        <tr class="bg-white dark:bg-gray-800">
+            <th
+                scope="row"
+                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+            >
+                Modernization
+            </th>
+            <td class="px-6 py-4 text-center">{judgement[5][0]}</td>
+            <td class="px-6 py-4 text-center">{judgement[5][1]}</td>
+            <td class="px-6 py-4 text-center">{judgement[5][2]}</td>
+        </tr>
+    </tbody>
+    <tfoot
+        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+    >
+        <tr>
+            <th scope="col" class="px-6 py-3">Total</th>
+            <th scope="col" class="px-6 py-3 text-center">{totalJudge1}</th>
+            <th scope="col" class="px-6 py-3 text-center">{totalJudge2}</th>
+            <th scope="col" class="px-6 py-3 text-center">{totalJudge3}</th>
+        </tr>
+    </tfoot>
+</table>

@@ -2,18 +2,21 @@
 interface Props {
 	date: string;
 	title: string;
-    link: string;
+    link?: string;
+    dense?: boolean;
 }
 
 const { 
-    date, title, link
+    date, title, link, dense
 } = Astro.props;
 ---
 
-<li class="mb-10 ms-4">
+<li class={ !dense ? "mb-10 ms-4" : "mb-4 ms-4"}>
     <div class="absolute w-3 h-3 rounded-full mt-1.5 -start-1.5 border border-gray-900 bg-gray-700"></div>
     <time class="mb-1 text-sm font-normal leading-none text-gray-500">{date}</time>
-    <a href={link} class="text-lg font-semibold text-white underline block">{title}</a>
+    
+    {link ? <a href={link || null} class="text-lg font-semibold text-white underline block">{title}</a> : <span class="text-lg font-semibold text-white block">{title}</span>}
+
     <p class="text-base font-normal text-gray-400">
         <slot/>
     </p>

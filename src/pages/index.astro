@@ -1,30 +1,41 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Title from '../components/Title.astro';
-import Timeline from '../components/Timeline.astro';
-import TimelineItem from '../components/TimelineItem.astro';
+import Layout from "../layouts/Layout.astro";
+import Title from "../components/Title.astro";
+import Timeline from "../components/Timeline.astro";
+import TimelineItem from "../components/TimelineItem.astro";
 
-import { Image } from 'astro:assets';
-import logo from './logo.png';
+import { Image } from "astro:assets";
+import logo from "./logo.png";
 ---
 
 <Layout title="osu! game Discord events.">
 	<Image class="mb-10" src={logo} alt="osu! Game Discord Events" />
 	<p class="mb-10">
-		At the <a class="underline" href="https://discord.gg/osu">unofficial osu! game community discord server</a>,
-		every once in a while we hold some multiplayer events.
-		This is an archive of the leaderboards for each of them.
+		At the <a class="underline" href="https://discord.gg/osu"
+			>unofficial osu! game community discord server</a
+		>, every once in a while we hold some events. This is an archive of the
+		leaderboards and results for each of them.
 	</p>
 	<Timeline>
+		<TimelineItem
+			title="osu! Event #4 - Can I haz beatmap?"
+			date="2024-04-07 - 2024-08-19"
+			link="/event-4-can-i-haz-beatmap"
+		>
+			Mappers were challenged to make a beatmap inspired by old styles.
+			Choose an old map and try to take inspiration from it, while also
+			applying modern mapping techniques to put a new spin on it.
+		</TimelineItem>
+
 		<TimelineItem
 			title="osu! Event #3 - Rhythm of the Past"
 			date="2024-02-17"
 			link="/event-3-rhythm-of-the-past"
 		>
-			In this event we celebrated osu!lazer finally enabling PP.
-			20 different maps were played as we revisited old, historic,
-			iconic or otherwise notable maps, discussed some osu! history
-			between maps and had a lot of fun. The event took ~2.5 hours.
+			In this event we celebrated osu!lazer finally enabling PP. 20
+			different maps were played as we revisited old, historic, iconic or
+			otherwise notable maps, discussed some osu! history between maps and
+			had a lot of fun. The event took ~2.5 hours.
 		</TimelineItem>
 
 		<TimelineItem
@@ -32,19 +43,15 @@ import logo from './logo.png';
 			date="2022-10-31"
 			link="/event-2-halloween"
 		>
-			On this Halloween night, 19 different maps were played for
-			over ~2.5 hours by players across two lobbies. The Halloween
-			themed maps started at 4.5* and ramped up to 7.5* by the end,
-			good time was had by all.
+			On this Halloween night, 19 different maps were played for over ~2.5
+			hours by players across two lobbies. The Halloween themed maps
+			started at 4.5* and ramped up to 7.5* by the end, good time was had
+			by all.
 		</TimelineItem>
 
-		<TimelineItem
-			title="osu! Event #1"
-			date="2022-01-23"
-			link="/event-1"
-		>
-			Our first ever multiplayer event. There were two lobbies
-			for osu! (standard) and one lobby for osu!mania.
+		<TimelineItem title="osu! Event #1" date="2022-01-23" link="/event-1">
+			Our first ever multiplayer event. There were two lobbies for osu!
+			(standard) and one lobby for osu!mania.
 		</TimelineItem>
 	</Timeline>
 </Layout>
