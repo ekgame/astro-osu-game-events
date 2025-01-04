@@ -1,0 +1,542 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Title from "../../components/Title.astro";
+
+import { Image } from "astro:assets";
+import banner from "./banner.png";
+---
+
+<style>
+    .hover-to-show {
+        position: relative;
+    }
+
+    .hover-to-show::after {
+        position: absolute;
+        inset: 0;
+        content: "Hover to show answer";
+        background-color: #000;
+        display: flex;
+        padding: 1em;
+        transition: 0.2s;
+    }
+
+    .hover-to-show:hover::after {
+        opacity: 0;
+    }
+</style>
+
+<Layout title="osu! Event #5 - Riddle me this, riddle me that">
+    <Title> osu! Event #5 - Riddle me this, riddle me that </Title>
+
+    <Image
+        class="mb-8"
+        src={banner}
+        alt="osu! Event #5 - Riddle me this, riddle me that"
+    />
+
+    <p class="mb-4">
+        In this event - players were placed in as escape room (Discord channel)
+        where they had to solve riddles to progress. There were 22 questions of
+        increasing difficulty and the first person to solve all of them would be
+        granted the <span
+            class="text-yellow-400 bg-yellow-950 px-1 rounded-md whitespace-nowrap"
+            >Escape Event Winner 2024</span
+        > role.
+    </p>
+
+    <p class="mb-8">
+        The winner was <a
+            class="text-osu-pink underline"
+            href="https://osu.ppy.sh/users/12021964">SpeedWeeb420</a
+        > who solved all the riddles in 2 hours.
+    </p>
+
+    <h2 class="mb-4 text-lg font-bold">Questions and Answers</h2>
+
+    <div class="border border-gray-800 divide-y divide-gray-800 mb-4">
+        <div class="p-4">
+            <p class="font-bold">Question 1</p>
+        </div>
+        <div class="p-4 font-mono">
+            The game feels bland, as we all can see,<br />
+            Yet we can adorn it, let it be free.<br />
+            With colors and shapes, in the ini we play,<br />
+            Unique in your style, what concept holds sway?<br />
+        </div>
+        <div>
+            <p class="p-4 hover-to-show">
+                <span class="font-bold">Answer:</span> skin
+            </p>
+        </div>
+    </div>
+
+    <div class="border border-gray-800 divide-y divide-gray-800 mb-4">
+        <div class="p-4">
+            <p class="font-bold">Question 2</p>
+        </div>
+        <div class="p-4 font-mono">
+            Im flashy and for style<br />
+            Yet players preferably turn me off.<br />
+            I increase a beamaps quality by a mile<br />
+            But im as distracting as a cough.<br />
+            What am I?
+        </div>
+        <div>
+            <p class="p-4 hover-to-show">
+                <span class="font-bold">Answer:</span> storyboard
+            </p>
+        </div>
+    </div>
+
+    <div class="border border-gray-800 divide-y divide-gray-800 mb-4">
+        <div class="p-4">
+            <p class="font-bold">Question 3</p>
+        </div>
+        <div class="p-4 font-mono">
+            Which mod slows the spinner, making spinners easier on a map?
+        </div>
+        <div>
+            <p class="p-4 hover-to-show">
+                <span class="font-bold">Answer:</span> spun out
+            </p>
+        </div>
+    </div>
+
+    <div class="border border-gray-800 divide-y divide-gray-800 mb-4">
+        <div class="p-4">
+            <p class="font-bold">Question 4</p>
+        </div>
+        <div class="p-4 font-mono">
+            OH MY GOD 😱 ITS A STOP SIGN 🛑 FINDING NEMO 🐠 GOLDFISH 🟨 🐠 DORRY
+            🐟 NATIONAL GEOGRAPHIC 🟨 GODDAMNIT! 🤬<br />
+            <br />
+            Which player made this infamous copypasta?<br />
+        </div>
+        <div>
+            <p class="p-4 hover-to-show">
+                <span class="font-bold">Answer:</span> RyuK
+            </p>
+        </div>
+    </div>
+
+    <div class="border border-gray-800 divide-y divide-gray-800 mb-4">
+        <div class="p-4">
+            <p class="font-bold">Question 5</p>
+        </div>
+        <div class="p-4 font-mono">
+            My name is osu!topus, I am the best at my game,<br />
+            With no need for hands, I still achieve fame.<br />
+            I play for you, clicking with perfect precision,<br />
+            What mode am i playing, in this rhythm game’s vision?<br />
+        </div>
+        <div>
+            <p class="p-4 hover-to-show">
+                <span class="font-bold">Answer:</span> osu!mania
+            </p>
+        </div>
+    </div>
+
+    <div class="border border-gray-800 divide-y divide-gray-800 mb-4">
+        <div class="p-4">
+            <p class="font-bold">Question 6</p>
+        </div>
+        <div class="p-4 font-mono">
+            In a grand digital canvas where pixels unite,<br />
+            A colorful battle of art and might.<br />
+            From the osu! community, the logo took its stand,<br />
+            In a massive Reddit event, what was their brand?<br />
+        </div>
+        <div>
+            <p class="p-4 hover-to-show">
+                <span class="font-bold">Answer:</span> /r/place
+            </p>
+        </div>
+    </div>
+
+    <div class="border border-gray-800 divide-y divide-gray-800 mb-4">
+        <div class="p-4">
+            <p class="font-bold">Question 7</p>
+        </div>
+        <div class="p-4 font-mono">
+            I taught a generation seeking for guidance<br />
+            Gave all I know for painting a canvas.<br />
+            I raised a group of people who are now aspirants<br />
+            As i smile from a distance of who these people have become as one can
+            thus.<br />
+            Who am I?<br />
+        </div>
+        <div>
+            <p class="p-4 hover-to-show">
+                <span class="font-bold">Answer:</span> pishifat
+            </p>
+        </div>
+    </div>
+
+    <div class="border border-gray-800 divide-y divide-gray-800 mb-4">
+        <div class="p-4">
+            <p class="font-bold">Question 8</p>
+        </div>
+        <div class="p-4 font-mono">
+            There's a butterfly in my hair,<br />
+            These is love in the air.<br />
+            I was made by Lasse,<br />
+            I kinda broke the pp,<br />
+            Who am I?<br />
+        </div>
+        <div>
+            <p class="p-4 hover-to-show">
+                <span class="font-bold">Answer:</span> Zan'ei
+            </p>
+        </div>
+    </div>
+
+    <div class="border border-gray-800 divide-y divide-gray-800 mb-4">
+        <div class="p-4">
+            <p class="font-bold">Question 9</p>
+        </div>
+        <div class="p-4 font-mono">
+            Through all the broken barriers and all the crazy plays,<br />
+            One era defining session shattered the veil and birthed new days.<br
+            />
+            Though the shining example's now lesser, we once knew that -<br />
+            A millenium's worth of skill, was once condensed into some pig fat.<br
+            />
+            Who am I?<br />
+        </div>
+        <div>
+            <p class="p-4 hover-to-show">
+                <span class="font-bold">Answer:</span> Vaxei
+            </p>
+        </div>
+    </div>
+
+    <div class="border border-gray-800 divide-y divide-gray-800 mb-4">
+        <div class="p-4">
+            <p class="font-bold">Question 10</p>
+        </div>
+        <div class="p-4 font-mono">
+            That's Suspisciously named, surely seems wrong. <br />
+            This map's title is an oxymoron! <br />
+            Despite the weird phrasing, this map's still on top;<br />
+            Surpassing what some would call Sotark's "Slop". <br />
+            What map am I?<br />
+        </div>
+        <div>
+            <p class="p-4 hover-to-show">
+                <span class="font-bold">Answer:</span> Reol - No title
+            </p>
+        </div>
+    </div>
+
+    <div class="border border-gray-800 divide-y divide-gray-800 mb-4">
+        <div class="p-4">
+            <p class="font-bold">Question 11</p>
+        </div>
+        <div class="p-4 font-mono">
+            As leaderboard scores come and go. <br />
+            Only one player was able to achieve becoming “The Prince of Disco” <br
+            />
+            Who is this player? <br />
+        </div>
+        <div>
+            <p class="p-4 hover-to-show">
+                <span class="font-bold">Answer:</span> Tactic
+            </p>
+        </div>
+    </div>
+
+    <div class="border border-gray-800 divide-y divide-gray-800 mb-4">
+        <div class="p-4">
+            <p class="font-bold">Question 12</p>
+        </div>
+        <div class="p-4 font-mono">
+            Oh mah gah,<br />
+            we have a new winner, for our all-time favourite game!<br />
+            The top of the world, if for only a week, he put all others to shame.<br
+            />
+            And like those before, he reached the top, on a map that was named quite
+            aptly,<br />
+            Despite the flow, and the speed hit in tow, the map made victory sound
+            snappy.<br />
+            What map am I?<br />
+        </div>
+        <div>
+            <p class="p-4 hover-to-show">
+                <span class="font-bold">Answer:</span> xi - over the top
+            </p>
+        </div>
+    </div>
+
+    <div class="border border-gray-800 divide-y divide-gray-800 mb-4">
+        <div class="p-4">
+            <p class="font-bold">Question 13</p>
+        </div>
+        <div class="p-4 font-mono">
+            Through the years, we've come to play;<br />
+            larger maps, throughout our days;<br />
+            in fact, these portions of days are long,<br />
+            longer and greater, further the songs -<br />
+            <br />
+            until the maps cause pain through glory,<br />
+            stamina upheld through some gore-y story,<br />
+            drumming for as long as you can, <br />
+            What Map am I?<br />
+        </div>
+        <div>
+            <p class="p-4 hover-to-show">
+                <span class="font-bold">Answer:</span> Nana Party
+            </p>
+        </div>
+    </div>
+
+    <div class="border border-gray-800 divide-y divide-gray-800 mb-4">
+        <div class="p-4">
+            <p class="font-bold">Question 14</p>
+        </div>
+        <div class="p-4 font-mono">
+            Karcher saw as the dragon flew,<br />
+            wreaking havoc over all of osu,<br />
+            hoarding its gold, 3 thousand at hand,<br />
+            clawing its way through all of the land. <br />
+            <br />
+            The noble knight approaches the cave, <br />
+            slays the dragon, osu he's saved -<br />
+            Taken this song's life as well as the prize;<br />
+            Following this bounty, what map am I?<br />
+        </div>
+        <div>
+            <p class="p-4 hover-to-show">
+                <span class="font-bold">Answer:</span> Yomi Yori
+            </p>
+        </div>
+    </div>
+
+    <div class="border border-gray-800 divide-y divide-gray-800 mb-4">
+        <div class="p-4">
+            <p class="font-bold">Question 15</p>
+        </div>
+        <div class="p-4 font-mono">
+            As a dragon soars far and wide,<br />
+            It land calmly into its den and rests.<br />
+            With its wings placed into the crevices of its side,<br />
+            Its scales blue shiny and only for the brave to best.<br />
+            What map am I?<br />
+        </div>
+        <div>
+            <p class="p-4 hover-to-show">
+                <span class="font-bold">Answer:</span> Blue Dragon
+            </p>
+        </div>
+    </div>
+
+    <div class="border border-gray-800 divide-y divide-gray-800 mb-4">
+        <div class="p-4">
+            <p class="font-bold">Question 16</p>
+        </div>
+        <div class="p-4 font-mono">
+            As his scores soared high, he flew like a bird;<br />
+            Like a fish out of water, though; his presence was absurd!<br />
+            Like a salmon swimming upstream, against the tides of turbulence,<br
+            />
+            At a speed so fast, it's been unmatched since.<br />
+            Who am I?<br />
+        </div>
+        <div>
+            <p class="p-4 hover-to-show">
+                <span class="font-bold">Answer:</span> Flying Tuna
+            </p>
+        </div>
+    </div>
+
+    <div class="border border-gray-800 divide-y divide-gray-800 mb-4">
+        <div class="p-4">
+            <p class="font-bold">Question 17</p>
+        </div>
+        <div class="p-4 font-mono">
+            As many players rise and fall to the top<br />
+            There was only one to be different and pop<br />
+            As he was the only one to use a mouse and not a tablet<br />
+            But still rose to the occasion and became a star<br />
+            Who is this player?<br />
+        </div>
+        <div>
+            <p class="p-4 hover-to-show">
+                <span class="font-bold">Answer:</span> firebat92 / AngelSim / AngeLMegumin
+            </p>
+        </div>
+    </div>
+
+    <div class="border border-gray-800 divide-y divide-gray-800 mb-4">
+        <div class="p-4">
+            <p class="font-bold">Question 18</p>
+        </div>
+        <div class="p-4 font-mono">
+            Fire and rescue can't evacuate this,<br />
+            Cause instead of a forest, it's a play.<br />
+            As a bounty of grand amounts persisted,<br />
+            Only ones been saved to this day<br />
+            What map am I?<br />
+        </div>
+        <div>
+            <p class="p-4 hover-to-show">
+                <span class="font-bold">Answer:</span> Save me
+            </p>
+        </div>
+    </div>
+
+    <div class="border border-gray-800 divide-y divide-gray-800 mb-4">
+        <div class="p-4">
+            <p class="font-bold">Question 19</p>
+        </div>
+        <div class="p-4 font-mono">
+            As my violin plays I am I make you shake hard as ever,<br />
+            My notes are placed awkward as the touch of leather. <br />
+            As few people beat me day by day,<br />
+            I'm a striking image of what a player might beat and dream.<br />
+        </div>
+        <div>
+            <p class="p-4 hover-to-show">
+                <span class="font-bold">Answer:</span> Image Material
+            </p>
+        </div>
+    </div>
+
+    <div class="border border-gray-800 divide-y divide-gray-800 mb-4">
+        <div class="p-4">
+            <p class="font-bold">Question 20</p>
+        </div>
+        <div class="p-4 font-mono">
+            A good king reigns through fear and fear alone.<br />
+            Uncomfortable streams are my claim to the throne.<br />
+            Death and despair ring through these hallowed halls,<br />
+            As you lay, choking, with no help to call.<br />
+            What map am I?<br />
+        </div>
+        <div>
+            <p class="p-4 hover-to-show">
+                <span class="font-bold">Answer:</span> Reign of fear
+            </p>
+        </div>
+    </div>
+
+    <div class="border border-gray-800 divide-y divide-gray-800 mb-4">
+        <div class="p-4">
+            <p class="font-bold">Question 21</p>
+        </div>
+        <div class="p-4 font-mono">
+            I'm pink, you'll find me all around,<br />
+            In the splash screen, menus, and when bugs were found.<br />
+            With a name that's sweet and often shown,<br />
+            What's the term for this symbol known?<br />
+        </div>
+        <div>
+            <p class="p-4 hover-to-show">
+                <span class="font-bold">Answer:</span> osu cookie
+            </p>
+        </div>
+    </div>
+
+    <div class="border border-gray-800 divide-y divide-gray-800 mb-8">
+        <div class="p-4">
+            <p class="font-bold">Question 22</p>
+        </div>
+        <div class="p-4 font-mono">
+            The Great Escape<br />
+            <br />
+            In a chamber of echoes where beats intertwine, <br />
+            Three shadows linger, their purpose divine. <br />
+            One whispers softly, with elegance concealed, <br />
+            Sketching your fate on a canvas revealed. <br />
+            <br />
+            The second, a mosaic in a rhythmic trance, <br />
+            A silent architect, shaping your chance. <br />
+            With each touch, a symphony rises to share, <br />
+            Crafted in different layouts where brilliance lays bare. <br />
+            <br />
+            The last glides like clouds, elusive and sly, <br />
+            A phantom companion, as swift as a sigh. <br />
+            With the help of photons, it guides every arc, <br />
+            A dance in the dark, where precision ignites a spark. <br />
+            <br />
+            Solve this trio, break free from the trap, <br />
+            What are these vessels that will spring the latch?<br />
+        </div>
+        <div>
+            <div class="p-4 hover-to-show">
+                <div><span class="font-bold">Answer 1:</span> tablet</div>
+                <div><span class="font-bold">Answer 2:</span> keyboard</div>
+                <div><span class="font-bold">Answer 3:</span> mouse</div>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="mb-4 text-lg font-bold">Participation stats</h2>
+
+    <div class="mb-8">
+        <div style="height: 600px">
+            <canvas id="chart"></canvas>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            const ctx = document.getElementById("chart");
+
+            document.addEventListener("DOMContentLoaded", function () {
+                Chart.defaults.backgroundColor = "#9BD0F5";
+                Chart.defaults.borderColor = "rgb(31 41 55)";
+                Chart.defaults.color = "#8f9fb5";
+
+                new Chart(ctx, {
+                    type: "bar",
+                    data: {
+                        labels: [
+                            "Question 1",
+                            "Question 2",
+                            "Question 3",
+                            "Question 4",
+                            "Question 5",
+                            "Question 6",
+                            "Question 7",
+                            "Question 8",
+                            "Question 9",
+                            "Question 10",
+                            "Question 11",
+                            "Question 12",
+                            "Question 13",
+                            "Question 14",
+                            "Question 15",
+                            "Question 16",
+                            "Question 17",
+                            "Question 18",
+                            "Question 19",
+                            "Question 20",
+                            "Question 21",
+                            "Question 22",
+                        ],
+                        datasets: [
+                            {
+                                label: "# of people who answered correctly",
+                                data: [
+                                    173, 171, 142, 135, 122, 105, 103, 91, 88,
+                                    79, 77, 76, 74, 65, 65, 65, 65, 63, 62, 60,
+                                    60, 57,
+                                ],
+                                borderWidth: 1,
+                            },
+                        ],
+                    },
+                    options: {
+                        indexAxis: "y",
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                beginAtZero: true,
+                            },
+                        },
+                    },
+                });
+            });
+        </script>
+    </div>
+</Layout>
