@@ -1,24 +1,21 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Title from "../../components/Title.astro";
-import Podium from '../../components/Podium.astro';
-import Leaderboard from '../../components/Leaderboard.astro';
-import BeatmapLeaderboard from '../../components/BeatmapLeaderboard.astro';
+import Podium from "../../components/Podium.astro";
+import Leaderboard from "../../components/Leaderboard.astro";
+import BeatmapLeaderboard from "../../components/BeatmapLeaderboard.astro";
 
 import { Image } from "astro:assets";
 import banner from "./banner.jpg";
 
-import { totalScores, beatmapScores } from './_score_data.json';
+import { totalScores, beatmapScores } from "./_score_data.json";
 
-const sortedTotalScores = totalScores.sort((a,b) => b.score - a.score);
+const sortedTotalScores = totalScores.sort((a, b) => b.score - a.score);
 
-const sortedBeatmapScores = beatmapScores
-    .map(game => ({
-      ...game,
-      scores: game.scores.sort((a,b) => b.score - a.score),
-    }));
-
-
+const sortedBeatmapScores = beatmapScores.map((game) => ({
+    ...game,
+    scores: game.scores.sort((a, b) => b.score - a.score),
+}));
 ---
 
 <Layout title="osu! Event #6 - Who let him cook?">
@@ -27,11 +24,11 @@ const sortedBeatmapScores = beatmapScores
     <Image class="mb-8" src={banner} alt="osu! Event #6 - Who let him cook?" />
 
     <p class="mb-8">
-        In this event, players joined a lobby to play a selection of osu!mania
-        maps. We have a list of Rice and Noodle maps that we will play through,
-        switching between the two sets as we go on. The maps progressively get
-        harder, until the very end, where there lies a tough challenge that our
-        valiant players must face.
+        This is the 4th multiplayer event, where players joined a multiple
+        lobbies to play a selection of osu!mania maps. We have a list of Rice
+        and Noodle maps that we will play through, switching between the two
+        sets as we go on. The maps progressively get harder, until the very end,
+        where there lies a tough challenge that our valiant players must face.
     </p>
 
     <div class="mb-8">
@@ -44,13 +41,18 @@ const sortedBeatmapScores = beatmapScores
 
     <div class="mb-8">
         <div class="text-xl p-4 font-bold">Overall scores</div>
-        <Leaderboard scores={sortedTotalScores}/>
+        <Leaderboard scores={sortedTotalScores} />
     </div>
 
     <div class="text-xl p-4 font-bold">Individual beatmap scores</div>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {sortedBeatmapScores.map((beatmapScores) => 
-            <BeatmapLeaderboard beatmap={beatmapScores.beatmap} scores={beatmapScores.scores}/>
-        )}
+        {
+            sortedBeatmapScores.map((beatmapScores) => (
+                <BeatmapLeaderboard
+                    beatmap={beatmapScores.beatmap}
+                    scores={beatmapScores.scores}
+                />
+            ))
+        }
     </div>
 </Layout>
