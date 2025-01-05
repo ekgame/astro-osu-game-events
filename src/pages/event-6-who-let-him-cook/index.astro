@@ -9,10 +9,16 @@ import { Image } from "astro:assets";
 import banner from "./banner.jpg";
 
 import { totalScores, beatmapScores } from "./_score_data.json";
+import { beatmapScores as bonusBeatmapScores } from "./_score_data_bonus.json";
 
 const sortedTotalScores = totalScores.sort((a, b) => b.score - a.score);
 
 const sortedBeatmapScores = beatmapScores.map((game) => ({
+    ...game,
+    scores: game.scores.sort((a, b) => b.score - a.score),
+}));
+
+const sortedBonusBeatmapScores = bonusBeatmapScores.map((game) => ({
     ...game,
     scores: game.scores.sort((a, b) => b.score - a.score),
 }));
@@ -45,12 +51,29 @@ const sortedBeatmapScores = beatmapScores.map((game) => ({
     </div>
 
     <div class="text-xl p-4 font-bold">Individual beatmap scores</div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
         {
             sortedBeatmapScores.map((beatmapScores) => (
                 <BeatmapLeaderboard
                     beatmap={beatmapScores.beatmap}
                     scores={beatmapScores.scores}
+                    mode="mania"
+                />
+            ))
+        }
+    </div>
+
+    <div class="text-xl p-4 font-bold">
+        Bonus map<br>
+        <span class="text-xs italic font-normal text-gray-500">Not counted towards the totals</span>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {
+            sortedBonusBeatmapScores.map((beatmapScores) => (
+                <BeatmapLeaderboard
+                    beatmap={beatmapScores.beatmap}
+                    scores={beatmapScores.scores}
+                    mode="mania"
                 />
             ))
         }

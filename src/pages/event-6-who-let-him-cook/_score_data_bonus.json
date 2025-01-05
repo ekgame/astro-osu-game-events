@@ -1,0 +1,67 @@
+{
+    "totalScores": [
+        {
+            "score": 260696,
+            "player": {
+                "username": "SpeedWeeb420",
+                "userId": 12021964,
+                "rank": 550910
+            }
+        },
+        {
+            "score": 53665,
+            "player": {
+                "username": "Aster0id",
+                "userId": 23548037,
+                "rank": 239470
+            }
+        },
+        {
+            "score": 985876,
+            "player": {
+                "username": "invadey",
+                "userId": 17753122,
+                "rank": 141
+            }
+        }
+    ],
+    "beatmapScores": [
+        {
+            "beatmap": {
+                "beatmapId": 4794061,
+                "beatmapSetId": 2253809,
+                "creator": "Some1SomeWhere",
+                "difficulty": 5.84477,
+                "artist": "[LS]Gavin",
+                "title": "Liminality",
+                "version": "Familiar Faces in Peculiar Places"
+            },
+            "scores": [
+                {
+                    "player": {
+                        "username": "SpeedWeeb420",
+                        "userId": 12021964,
+                        "rank": 550910
+                    },
+                    "score": 260696
+                },
+                {
+                    "player": {
+                        "username": "Aster0id",
+                        "userId": 23548037,
+                        "rank": 239470
+                    },
+                    "score": 53665
+                },
+                {
+                    "player": {
+                        "username": "invadey",
+                        "userId": 17753122,
+                        "rank": 141
+                    },
+                    "score": 985876
+                }
+            ]
+        }
+    ]
+}

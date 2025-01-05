@@ -1,21 +1,22 @@
 ---
 import Leaderboard from "./Leaderboard.astro";
-import { type PlayerScore, type Beatmap } from '../utils/common.ts';
+import { type PlayerScore, type Beatmap } from "../utils/common.ts";
 
 interface Props {
-	scores: PlayerScore[];
+    scores: PlayerScore[];
     beatmap: Beatmap;
+    mode: "osu" | "taiko" | "fruits" | "mania";
 }
 
-const { 
-    beatmap,
-    scores,
-} = Astro.props;
-
+const { beatmap, scores, mode } = Astro.props;
 ---
 
 <div class="rounded-xl overflow-hidden">
-    <a href="#" class="group bg-center bg-cover flex flex-col gap-4 p-4 darken" style={`background-image: url("https://assets.ppy.sh/beatmaps/${beatmap.beatmapSetId}/covers/card@2x.jpg")`}>
+    <a
+        href={`https://osu.ppy.sh/beatmapsets/${beatmap.beatmapSetId}#${mode}/${beatmap.beatmapId}`}
+        class="group bg-center bg-cover flex flex-col gap-4 p-4 darken"
+        style={`background-image: url("https://assets.ppy.sh/beatmaps/${beatmap.beatmapSetId}/covers/card@2x.jpg")`}
+    >
         <div>
             <div class="font-bold group-hover:underline">{beatmap.title}</div>
             <div>by {beatmap.artist}</div>
@@ -26,7 +27,7 @@ const {
             <div>mapset by {beatmap.creator}</div>
         </div>
     </a>
-    <Leaderboard scores={scores} forBeatmap={true}/>
+    <Leaderboard scores={scores} forBeatmap={true} />
 </div>
 
 <style>
@@ -35,9 +36,9 @@ const {
     }
     .darken::before {
         position: absolute;
-        content: ' ';
+        content: " ";
         inset: 0;
-        background-color: rgba(0, 0, 0, .5);
+        background-color: rgba(0, 0, 0, 0.5);
     }
 
     .darken > * {

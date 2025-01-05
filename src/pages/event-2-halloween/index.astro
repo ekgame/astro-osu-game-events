@@ -1,33 +1,30 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Title from '../../components/Title.astro';
-import Podium from '../../components/Podium.astro';
-import Leaderboard from '../../components/Leaderboard.astro';
-import BeatmapLeaderboard from '../../components/BeatmapLeaderboard.astro';
+import Layout from "../../layouts/Layout.astro";
+import Title from "../../components/Title.astro";
+import Podium from "../../components/Podium.astro";
+import Leaderboard from "../../components/Leaderboard.astro";
+import BeatmapLeaderboard from "../../components/BeatmapLeaderboard.astro";
 
-import { totalScores, beatmapScores } from './_score_data.json';
+import { totalScores, beatmapScores } from "./_score_data.json";
 
-const sortedTotalScores = totalScores.sort((a,b) => b.score - a.score);
+const sortedTotalScores = totalScores.sort((a, b) => b.score - a.score);
 
 const sortedBeatmapScores = beatmapScores
-    .sort((a,b) => b.scores.length - a.scores.length)
-    .map(game => ({
-      ...game,
-      scores: game.scores.sort((a,b) => b.score - a.score),
+    .sort((a, b) => b.scores.length - a.scores.length)
+    .map((game) => ({
+        ...game,
+        scores: game.scores.sort((a, b) => b.score - a.score),
     }));
-
 ---
 
 <Layout title="osu! Event #2 - Halloween">
-    <Title>
-        osu! Event #2 - Halloween
-    </Title>
+    <Title> osu! Event #2 - Halloween </Title>
 
     <p class="mb-8">
-        The second osu! Game Discord Event, held on 2022-10-31 - the Halloween night.
-        19 different maps were played over ~2.5 hours by players across two lobbies.
-        The Halloween themed maps started at 4.5* and ramped up to 7.5* by the end,
-        good time was had by all.
+        The second osu! Game Discord Event, held on 2022-10-31 - the Halloween
+        night. 19 different maps were played over ~2.5 hours by players across
+        two lobbies. The Halloween themed maps started at 4.5* and ramped up to
+        7.5* by the end, good time was had by all.
     </p>
 
     <div class="mb-8">
@@ -40,13 +37,19 @@ const sortedBeatmapScores = beatmapScores
 
     <div class="mb-8">
         <div class="text-xl p-4 font-bold">Overall scores</div>
-        <Leaderboard scores={sortedTotalScores}/>
+        <Leaderboard scores={sortedTotalScores} />
     </div>
 
     <div class="text-xl p-4 font-bold">Individual beatmap scores</div>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {sortedBeatmapScores.map((beatmapScores) => 
-            <BeatmapLeaderboard beatmap={beatmapScores.beatmap} scores={beatmapScores.scores}/>
-        )}
+        {
+            sortedBeatmapScores.map((beatmapScores) => (
+                <BeatmapLeaderboard
+                    beatmap={beatmapScores.beatmap}
+                    scores={beatmapScores.scores}
+                    mode="osu"
+                />
+            ))
+        }
     </div>
 </Layout>
